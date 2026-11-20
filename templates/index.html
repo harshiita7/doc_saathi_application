@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GovGuide AI — Government Document Assistant</title>
+  <meta name="description" content="AI-powered government document assistant. Grounded answers with exact source page references.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="nav">
+      <a class="brand" href="/">
+        <div class="brand-icon">G</div>
+        GovGuide <span>AI</span>
+      </a>
+      <nav>
+        <a class="active" href="/">Home</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a class="btn-primary" href="/chat">Open Assistant</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge-pill">NESFIC-D-36 &bull; Government Document Assistant</div>
+        <h1>Understand Government Documents <em>Smarter.</em></h1>
+        <p class="hero-text">
+          Upload official government PDFs, circulars, or policy guidelines. Ask questions in plain language and receive accurate answers cited with original page numbers.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/chat">Get Started</a>
+          <a class="btn-secondary" href="#features">Explore Features</a>
+        </div>
+      </div>
+
+      <!-- Preview Card -->
+      <div class="preview-card" aria-hidden="true">
+        <div class="preview-header">
+          <div class="doc-badge">PDF</div>
+          <div>
+            <div class="preview-title">National_Scholarship_Guidelines.pdf</div>
+            <div class="preview-meta">Official Gazette &bull; 14 Pages</div>
+          </div>
+        </div>
+        <div class="preview-qa">
+          <div class="preview-q">Q: What is the minimum eligibility criteria?</div>
+          <p class="preview-a">
+            Applicants must be resident citizens with an annual family income under ₹2.5 Lakhs and have scored a minimum of 60% in the qualifying examination.
+          </p>
+          <span class="preview-source">Source: Page 4, Section 3.1</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Clear, Verified Government Information</h2>
+          <p>Designed for students, citizens, and professionals navigating official policies.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">01</div>
+            <h3>Page-by-Page Extraction</h3>
+            <p>Accurately parses document text while strictly preserving physical page indexes using PyMuPDF.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">02</div>
+            <h3>Targeted Document Search</h3>
+            <p>Finds key provisions and relevant clauses without relying on complex, opaque retrieval pipelines.</p>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrapper">03</div>
+            <h3>Verifiable Source Citations</h3>
+            <p>Every response explicitly cites the source page numbers so you can verify the information yourself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="steps-section" id="how-it-works">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>How It Works</h2>
+          <p>Get answers from official files in three simple steps.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-box">
+            <span class="step-badge">Step 1</span>
+            <h3>Upload PDF Document</h3>
+            <p>Upload any government scheme, notification, or form up to 10 MB.</p>
+          </div>
+          <div class="step-box">
+            <span class="step-badge">Step 2</span>
+            <h3>Ask in Plain English</h3>
+            <p>Ask about eligibility, application deadlines, required paperwork, or steps.</p>
+          </div>
+          <div class="step-box">
+            <span class="step-badge">Step 3</span>
+            <h3>Get Grounded Answers</h3>
+            <p>Receive factual summaries directly mapped to the document page references.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div><strong>GovGuide AI</strong> &bull; NESFIC-D-36</div>
+      <div>For informational purposes. Always verify against official gazettes.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
