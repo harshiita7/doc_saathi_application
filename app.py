@@ -13,7 +13,10 @@ from backend.pdf_reader import read_pdf
 load_dotenv()
 
 app = Flask(__name__)
-app.config["UPLOAD_FOLDER"] = os.path.join(app.root_path, "uploads")
+if os.getenv("VERCEL"):
+    app.config["UPLOAD_FOLDER"] = "/tmp/uploads"
+else:
+    app.config["UPLOAD_FOLDER"] = os.path.join(app.root_path, "uploads")
 app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
 
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)

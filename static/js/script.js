@@ -80,7 +80,15 @@ pdfInput?.addEventListener("change", async () => {
 
   try {
     const response = await fetch("/upload", { method: "POST", body: formData });
-    const data = await response.json();
+    const rawText = await response.text();
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      throw new Error(
+        `Upload service returned an invalid response (${response.status}). Please try again.`
+      );
+    }
 
     if (!response.ok) throw new Error(data.error || "Upload failed.");
 
@@ -102,7 +110,15 @@ pdfInput?.addEventListener("change", async () => {
 removeButton?.addEventListener("click", async () => {
   try {
     const response = await fetch("/remove-document", { method: "POST" });
-    const data = await response.json();
+    const rawText = await response.text();
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      throw new Error(
+        `Server returned an invalid response (${response.status}). Please try again.`
+      );
+    }
     if (!response.ok) throw new Error(data.error || "Could not remove the document.");
     clearDocumentState();
   } catch (error) {
@@ -130,7 +146,15 @@ questionForm?.addEventListener("submit", async (event) => {
       body: JSON.stringify({ question }),
     });
 
-    const data = await response.json();
+    const rawText = await response.text();
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch {
+      throw new Error(
+        `Server returned an invalid response (${response.status}). Please try again.`
+      );
+    }
     loadingBubble.remove();
 
     if (!response.ok) throw new Error(data.error || "Could not generate an answer.");
