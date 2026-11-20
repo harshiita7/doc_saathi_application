@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GovGuide AI — Document Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="chat-layout">
+
+  <!-- Top Navigation Bar -->
+  <header class="chat-nav">
+    <a class="brand" href="/">
+      <div class="brand-icon">G</div>
+      GovGuide <span>AI</span>
+    </a>
+    <nav style="display:flex; align-items:center; gap:20px;">
+      <a href="/" style="font-size:14px; color:var(--text-muted); font-weight:500;">Home</a>
+      <span style="font-size:12px; font-weight:600; background:var(--primary-light); color:var(--primary); padding:3px 10px; border-radius:4px;">Assistant</span>
+    </nav>
+  </header>
+
+  <!-- Split Container -->
+  <main class="chat-container">
+
+    <!-- Left Sidebar: Document Management -->
+    <aside class="doc-sidebar">
+      <div>
+        <div class="sidebar-title">Document Source</div>
+
+        <input id="pdf-input" type="file" accept=".pdf,application/pdf" hidden>
+        
+        <button id="upload-button" class="upload-card-btn" type="button">
+          <div class="upload-icon">&#8679;</div>
+          <div class="upload-text">Upload Government PDF</div>
+          <div class="upload-hint">PDF files up to 10 MB</div>
+        </button>
+
+        <div class="doc-status-box" id="document-info">
+          <div class="doc-badge">PDF</div>
+          <div class="doc-meta">
+            <div class="doc-filename" id="document-name">No document uploaded</div>
+            <div class="doc-status status-waiting" id="document-status">Waiting for file</div>
+            <div class="doc-pages" id="document-pages"></div>
+          </div>
+        </div>
+      </div>
+
+      <button id="remove-button" class="remove-btn" type="button" hidden>
+        Remove Document
+      </button>
+    </aside>
+
+    <!-- Right Window: Chat Interface -->
+    <section class="chat-window">
+      <div class="chat-header">
+        <div>
+          <h1 class="chat-header-title">Document Assistant</h1>
+          <p class="chat-header-sub">Answers strictly grounded in your uploaded document</p>
+        </div>
+      </div>
+
+      <div class="chat-scroll" id="chat-messages">
+        <div class="empty-view" id="empty-state">
+          <div class="empty-view-icon">G</div>
+          <h3>GovGuide Assistant Ready</h3>
+          <p>Upload a government PDF on the left panel to begin asking questions.</p>
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <form class="chat-input-form" id="question-form">
+          <input
+            id="question-input"
+            class="chat-input"
+            type="text"
+            placeholder="Type your question about the document (e.g., eligibility, required documents)..."
+            autocomplete="off"
+            aria-label="Question"
+          >
+          <button id="send-button" class="chat-send-btn" type="submit">Ask AI</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

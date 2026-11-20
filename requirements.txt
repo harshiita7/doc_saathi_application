@@ -1,0 +1,6 @@
+Flask>=3.1,<4
+PyMuPDF>=1.26,<2
+httpx>=0.28,<1
+python-dotenv>=1.0,<2
+gunicorn>=23,<24
+gunicorn>=23.0.0
