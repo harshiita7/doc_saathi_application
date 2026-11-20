@@ -14,6 +14,7 @@ const questionInput  = document.getElementById("question-input");
 const sendButton     = document.getElementById("send-button");
 const chatMessages   = document.getElementById("chat-messages");
 const emptyState     = document.getElementById("empty-state");
+let uploadedDocument = null;
 
 /**
  * Append a chat message bubble
@@ -61,6 +62,7 @@ function clearDocumentState() {
   documentPages.textContent = "";
   removeButton.hidden = true;
   pdfInput.value = "";
+  uploadedDocument = null;
 }
 
 // Open file selector
@@ -93,6 +95,10 @@ pdfInput?.addEventListener("change", async () => {
     if (!response.ok) throw new Error(data.error || "Upload failed.");
 
     setDocumentState(data.filename, data.total_pages);
+    uploadedDocument = {
+      filename: data.filename,
+      pages: data.pages,
+    };
     addMessage(
       `"${data.filename}" is loaded (${data.total_pages} pages). You can now ask any question regarding this document.`,
       "assistant"
@@ -143,7 +149,11 @@ questionForm?.addEventListener("submit", async (event) => {
     const response = await fetch("/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({
+        question,
+        filename: uploadedDocument?.filename,
+        pages: uploadedDocument?.pages,
+      }),
     });
 
     const rawText = await response.text();

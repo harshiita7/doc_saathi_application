@@ -63,6 +63,7 @@ def upload_pdf():
             "success": True,
             "filename": document_context["filename"],
             "total_pages": total_pages,
+            "pages": pages,
             "message": "PDF uploaded and processed successfully.",
         })
     except (pymupdf.FileDataError, ValueError, RuntimeError) as exc:
@@ -81,13 +82,18 @@ def upload_pdf():
 def ask_question():
     data = request.get_json(silent=True) or {}
     question = data.get("question", "").strip()
+    request_pages = data.get("pages")
+    filename = data.get("filename")
 
-    if not document_context["filename"]:
+    pages = request_pages if isinstance(request_pages, list) and request_pages else document_context["pages"]
+    document_name = filename or document_context["filename"]
+
+    if not document_name or not pages:
         return jsonify({"error": "Please upload a PDF first."}), 400
     if not question:
         return jsonify({"error": "Please enter a question."}), 400
 
-    passages = search_document(document_context["pages"], question)
+    passages = search_document(pages, question)
     if not passages:
         return jsonify({
             "answer": "I could not find relevant information in the uploaded document.",
