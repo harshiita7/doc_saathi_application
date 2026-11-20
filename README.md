@@ -62,6 +62,14 @@ GovGuide-AI/
 
 ---
 
+## Deploy to Render
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/harshiita7/doc_saathi_application)
+
+After starting the deployment, set `GEMINI_API_KEY` in the Render service environment variables.
+
+---
+
 ## Setup Instructions
 
 ### 1. Clone / open in VS Code
