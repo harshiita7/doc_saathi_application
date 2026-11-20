@@ -1,3 +1,13 @@
+---
+title: GovGuide AI
+emoji: "\U0001f4c4"
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # GovGuide AI — NESFIC-D-36
 
 An AI-powered Government Document Assistant that lets users upload official PDF documents and ask plain-language questions, receiving grounded answers with supporting page references.
